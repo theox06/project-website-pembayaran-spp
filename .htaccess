@@ -1,0 +1,14 @@
+<IfModule mod_rewrite.c>
+    RewriteEngine on
+
+    RewriteRule ^public/ - [L]
+    # localhost/project_pkl_1/public
+
+    RewriteCond %{DOCUMENT_ROOT}/public/$1 -f
+    RewriteRule (.+) public/$1 [L]
+
+    RewriteRule (.*) public/index.php?page=$1 [L,QSA]
+
+    # localhost/project_pkl_1/siswa
+    # localhost/public/index.php?page=siswa
+</IfModule>
